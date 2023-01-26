@@ -1,0 +1,32 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path("book/<id>", views.book, name='book'),
+    path("books/<id>", views.books, name='books'),
+    path("all_books/<f>/<t>", views.all_books, name='all_books'),
+    path("task/<id>", views.task, name='task'),
+    path("images/<book>/<page>/<filename>", views.images, name='images'),
+    path("image/<id>", views.image_id, name='image'),
+    path('video/<id>', views.videos, name='videos'),
+    path('audio/<id>', views.audios, name='audios'),
+    path('page/<id>', views.tasks_on_page, name='tasks_on_page'),
+    path('pages/<id>', views.pages, name='pages'),
+    path('categories/', views.categories, name='categories'),
+    path('login/', views.login, name='login'),
+    path('register/', views.register, name='register'),
+    path('test/', views.test, name='test'),
+    path('csrf/', views.csrf, name="csrf"),
+    path('user/', views.user_info, name='user'),
+    path('message/', views.message, name='message'),
+    path('logout/', views.logout, name='logout'),
+    path('search/<s>', views.search, name='search'),
+    path('edit_user/', views.edit_user, name='edit_user'),
+    path('edit_task/', views.edit_task, name='edit_task'),
+    path('auth_email/<code>', views.auth_email, name='auth_email'),
+    path('add/', views.add_task, name='add_task'),
+    path('add_image/<id>', views.add_image, name='add_image'),
+    path('convert_svg/<id>', views.convert_svg, name='convert_svg'),
+    path('next/<id>', views.next_task, name='next_task'),
+]

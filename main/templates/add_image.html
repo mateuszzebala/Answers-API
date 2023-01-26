@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj zdjęcie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #a3c2ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px #fff;
+            border-radius: 10px;
+        }
+        input[type=file]{
+            display: none;
+        }
+        button{
+            font-size: 20px;
+            font-family: 'Rubik', sans-serif;
+            padding: 10px 30px;
+            margin: 10px 0;
+            border: 0;
+            background: #a3c2ff;
+            color: black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        span{
+            font-size: 30px;
+            font-family: 'Rubik', sans-serif;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+        }
+        button[type=submit]{
+
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <button type="button">
+            <label id="lbl" for="file-selector">Wybierz Zdjęcie</label>
+        </button>
+        <input type="file" name="image" id="file-selector">
+        <button type="submit">OK</button>
+        <script>
+            function onchangeinput(ev){
+                document.querySelector('#lbl').innerHTML = ev.target.value
+            }
+            document.querySelector('#file-selector').addEventListener('change', onchangeinput)
+        </script>
+          {% if added %}
+            <script>
+                document.querySelector('form').innerHTML = "<span>DODANO, id={{added}}</span>"
+            </script>
+        {% endif %}
+    </form>
+
+</body>
+</html>
